@@ -1,4 +1,4 @@
-# Qtasnim Test - Frontend - Wita Karwila
+# Qtasnim Frontend Technical Test - Wita Karwila
 
 This project using Vue 3 and Tailwind CSS
 
