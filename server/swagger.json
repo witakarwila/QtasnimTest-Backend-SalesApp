@@ -1,0 +1,560 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Sales Data API",
+    "version": "1.0.0",
+    "description": "API documentation for Sales Data application"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:5000",
+      "description": "Development server"
+    }
+  ],
+  "paths": {
+    "/api/v1/barang": {
+      "get": {
+        "summary": "Retrieve a list of product",
+        "tags": ["Products"],
+        "responses": {
+          "200": {
+            "description": "A list of product",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "description": "The product ID"
+                      },
+                      "nama": {
+                        "type": "string",
+                        "description": "The name of the product"
+                      },
+                      "stok": {
+                        "type": "integer",
+                        "description": "The stock of the product"
+                      },
+                      "id_jenis_barang": {
+                        "type": "integer",
+                        "description": "The product category ID"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new product",
+        "tags": ["Products"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["nama", "stok", "id_jenis_barang"],
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  },
+                  "nama": {
+                    "type": "string"
+                  },
+                  "stok": {
+                    "type": "integer"
+                  },
+                  "id_jenis_barang": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Product created successfully"
+          }
+        }
+      }
+    },
+    "/api/v1/barang/{id}": {
+      "get": {
+        "summary": "Get a product by ID",
+        "tags": ["Products"],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The product ID"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["id"],
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  },
+                  "nama": {
+                    "type": "string"
+                  },
+                  "stok": {
+                    "type": "integer"
+                  },
+                  "id_jenis_barang": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Product updated successfully"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update a product by ID",
+        "tags": ["Products"],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The product ID"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["id"],
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  },
+                  "nama": {
+                    "type": "string"
+                  },
+                  "stok": {
+                    "type": "integer"
+                  },
+                  "id_jenis_barang": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Product updated successfully"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a Product by ID",
+        "tags": ["Products"],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The Product ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Product deleted successfully"
+          }
+        }
+      }
+    },
+    "/api/v1/jenisBarang": {
+      "get": {
+        "summary": "Retrieve a list of product categories",
+        "tags": ["Product Category"],
+        "responses": {
+          "200": {
+            "description": "A list of product categories",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "description": "The product category ID"
+                      },
+                      "nama": {
+                        "type": "string",
+                        "description": "The name of the product categories"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new product category",
+        "tags": ["Product Category"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["nama"],
+                "properties": {
+                  "nama": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Product category created successfully"
+          }
+        }
+      }
+    },
+    "/api/v1/jenisBarang/{id}": {
+      "get": {
+        "summary": "Get a product category by ID",
+        "tags": ["Product Category"],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The product category ID"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["id"],
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  },
+                  "nama": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Category updated successfully"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update a product category by ID",
+        "tags": ["Product Category"],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The product category ID"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["nama"],
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "nama": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Category updated successfully"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a product category by ID",
+        "tags": ["Product Category"],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The product category ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Category deleted successfully"
+          }
+        }
+      }
+    },
+    "/api/v1/transaksi": {
+      "get": {
+        "summary": "Retrieve a list of transaction",
+        "tags": ["Transaction"],
+        "responses": {
+          "200": {
+            "description": "A list of transaction",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "description": "The transaction ID"
+                      },
+                      "id_barang": {
+                        "type": "integer",
+                        "description": "The product ID"
+                      },
+                      "stok": {
+                        "type": "integer",
+                        "description": "The product stock"
+                      },
+                      "jumlah": {
+                        "type": "integer",
+                        "description": "The transaction product amount"
+                      },
+                      "tanggal_transaksi": {
+                        "type": "string",
+                        "description": "The transaction date"
+                      },
+                      "nama_barang": {
+                        "type": "string",
+                        "description": "The name of the product"
+                      },
+                      "jenis_barang": {
+                        "type": "string",
+                        "description": "The name of the product category"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new transaction",
+        "tags": ["Transaction"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["id_barang", "jumlah"],
+                "properties": {
+                  "id_barang": {
+                    "type": "integer"
+                  },
+                  "jumlah": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Transaction created successfully"
+          }
+        }
+      }
+    },
+    "/api/v1/transaksi/{id}": {
+      "get": {
+        "summary": "Get a transaction data by ID",
+        "tags": ["Transaction"],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The transaction ID"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["id"],
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  },
+                  "id_barang": {
+                    "type": "integer"
+                  },
+                  "stok": {
+                    "type": "integer"
+                  },
+                  "jumlah": {
+                    "type": "integer"
+                  },
+                  "tanggal_transaksi": {
+                    "type": "string"
+                  },
+                  "nama_barang": {
+                    "type": "string"
+                  },
+                  "jenis_barang": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Get Transaction Data successfully"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update a transaction by ID",
+        "tags": ["Transaction"],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The transaction ID"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["id_barang", "jumlah"],
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  },
+                  "id_barang": {
+                    "type": "integer"
+                  },
+                  "stok": {
+                    "type": "integer"
+                  },
+                  "jumlah": {
+                    "type": "integer"
+                  },
+                  "tanggal_transaksi": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Transaction updated successfully"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a transaction by ID",
+        "tags": ["Transaction"],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The transaction ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Transaction deleted successfully"
+          }
+        }
+      }
+    }
+  }
+}
