@@ -2,11 +2,16 @@
 
 This project using NodeJS, ExpressJS, MySQL, Swagger API Documentation
 
-## Project setup
+## Project Setup
 ```
 git clone
 npm install
 ```
+
+## Database Setup:
+
+1. **Import Database:** Import the database file in the folder: `config/db_sales.sql`
+2. **Setup Database Config:** Enter the database credentials into this file `config/db.config.js`
 
 ## Running the Application:
 
