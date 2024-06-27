@@ -11,4 +11,4 @@ npm install
 ## Running the Application:
 
 1. **Start the Server:** Run `node server`.
-2. **API Documentation:** Open `http://localhost:5000/` to view the Swagger API documentation.
+2. **API Documentation:** Open `http://localhost:5000/` to view the API documentation.
